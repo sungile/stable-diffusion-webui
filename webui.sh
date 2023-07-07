@@ -218,7 +218,7 @@ prepare_tcmalloc() {
     fi
 }
 
-KEEP_GOING=1
+KEEP_GOING=0
 export SD_WEBUI_RESTART=tmp/restart
 while [[ "$KEEP_GOING" -eq "1" ]]; do
     if [[ ! -z "${ACCELERATE}" ]] && [ ${ACCELERATE}="True" ] && [ -x "$(command -v accelerate)" ]; then
