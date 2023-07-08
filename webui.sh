@@ -232,7 +232,7 @@ while [[ "$KEEP_GOING" -eq "1" ]]; do
         printf "Launching launch.py..."
         printf "\n%s\n" "${delimiter}"
         prepare_tcmalloc
-        printf "${python_cmd} ${LAUNCH_SCRIPT} $@"
+        printf "%s \"%s\" \"%s\"" "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
         "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
     fi
 
