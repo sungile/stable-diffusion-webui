@@ -229,7 +229,7 @@ while [[ "$KEEP_GOING" -eq "1" ]]; do
         accelerate launch --num_cpu_threads_per_process=6 "${LAUNCH_SCRIPT}" "$@"
     else
         printf "\n%s\n" "${delimiter}"
-        printf "Launching launch.py..."
+        printf "Launching launch--.py..."
         printf "\n%s\n" "${delimiter}"
         prepare_tcmalloc
         printf "%s \"%s\" \"%s\"" "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
