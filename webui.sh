@@ -234,6 +234,7 @@ while [[ "$KEEP_GOING" -eq "1" ]]; do
         prepare_tcmalloc
         printf "%s \"%s\" \"%s\"" "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
         "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
+        printf "break out "
     fi
 
     if [[ ! -f tmp/restart ]]; then
