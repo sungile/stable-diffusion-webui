@@ -22,7 +22,7 @@ export COMMANDLINE_ARGS="--skip-torch-cuda-test --precision full --no-half"
 #venv_dir="venv"
 
 # script to launch to start the app
-#export LAUNCH_SCRIPT="launch.py"
+export LAUNCH_SCRIPT="launch.py"
 
 # install command for torch
 #export TORCH_COMMAND="pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113"
