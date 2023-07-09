@@ -25,20 +25,15 @@ start = launch_utils.start
 
 
 def main():
-    print("launch.py main invoked")
     if not args.skip_prepare_environment:
-        print("prepare environment...")
         prepare_environment()
 
     if args.test_server:
-        print("test the server...")
         configure_for_tests()
 
     if args.start_server:
-        print("starting the server...")
         start()
 
 
 if __name__ == "__main__":
-    print("launch.py invoked")
     main()
