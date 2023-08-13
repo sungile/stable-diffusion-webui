@@ -26,8 +26,6 @@ WORKDIR /home/myuser/stable-diffusion-webui
 # Clone the repository into the "extensions" directory
 RUN git clone https://github.com/Mikubill/sd-webui-controlnet.git /home/myuser/stable-diffusion-webui/extensions/sd-webui-controlnet
 
-ENV COMMANDLINE_ARGS="--skip-torch-cuda-test --precision full --no-half"
-
 RUN bash -c "/home/myuser/stable-diffusion-webui/webui.sh --test-server"
 
 CMD ["bash", "webui.sh","--start-server","--skip-prepare-environment"]
