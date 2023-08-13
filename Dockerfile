@@ -26,6 +26,10 @@ WORKDIR /home/myuser/stable-diffusion-webui
 # Clone the repository into the "extensions" directory
 RUN git clone https://github.com/Mikubill/sd-webui-controlnet.git /home/myuser/stable-diffusion-webui/extensions/sd-webui-controlnet
 
+# Download the file directly into the "models" directory
+RUN wget -O /home/myuser/stable-diffusion-webui/extensions/sd-webui-controlnet/models/control_v11p_sd15_canny.pth \
+    https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth
+
 RUN bash -c "/home/myuser/stable-diffusion-webui/webui.sh --test-server"
 
 CMD ["bash", "webui.sh","--start-server","--skip-prepare-environment"]
