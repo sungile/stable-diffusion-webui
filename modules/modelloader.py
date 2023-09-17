@@ -8,7 +8,7 @@ from modules.upscaler import Upscaler, UpscalerLanczos, UpscalerNearest, Upscale
 from modules.paths import script_path, models_path
 
 
-def load_models(model_path: str, model_url: str = None, command_path: str = None, ext_filter=None, download_name=None, ext_blacklist=None) -> list:
+def load_models(model_path: str, model_url: str = None, command_path: str = None, ext_filter=None, download_name=None, ext_blacklist=None, loading=True) -> list:
     """
     A one-and done loader to try finding the desired models in specified directories.
 
@@ -45,12 +45,15 @@ def load_models(model_path: str, model_url: str = None, command_path: str = None
                     output.append(full_path)
 
         if model_url is not None and len(output) == 0:
-            if download_name is not None:
+            if download_name is not None and loading:
                 from basicsr.utils.download_util import load_file_from_url
                 dl = load_file_from_url(model_url, places[0], True, download_name)
                 output.append(dl)
             else:
                 output.append(model_url)
+                
+        if not loading:
+            output.append(model_url)
 
     except Exception:
         pass

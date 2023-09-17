@@ -232,7 +232,7 @@ def configure_opts_onchange():
     startup_timer.record("opts onchange")
 
 
-def initialize():
+def initialize(loading = True):
     fix_asyncio_event_loop_policy()
     validate_tls_options()
     configure_sigint_handler()
@@ -249,10 +249,10 @@ def initialize():
     gfpgan.setup_model(cmd_opts.gfpgan_models_path)
     startup_timer.record("setup gfpgan")
 
-    initialize_rest(reload_script_modules=False)
+    initialize_rest(loading=loading, reload_script_modules=False)
 
 
-def initialize_rest(*, reload_script_modules=False):
+def initialize_rest(*, loading, reload_script_modules=False):
     """
     Called both from initialize() and when reloading the webui.
     """
@@ -266,8 +266,8 @@ def initialize_rest(*, reload_script_modules=False):
         shared.sd_upscalers = upscaler.UpscalerLanczos().scalers
         modules.scripts.load_scripts()
         return
-
-    modules.sd_models.list_models()
+    
+    modules.sd_models.list_models(loading)
     startup_timer.record("list SD models")
 
     localization.list_localizations(cmd_opts.localizations_dir)
@@ -369,7 +369,7 @@ def stop_route(request):
 
 def webui():
     launch_api = cmd_opts.api
-    #initialize()
+    initialize(False)
 
     while 1:
         if shared.opts.clean_temp_dir_at_start:
