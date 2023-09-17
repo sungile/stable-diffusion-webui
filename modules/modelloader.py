@@ -53,7 +53,7 @@ def load_models(model_path: str, model_url: str = None, command_path: str = None
                 output.append(model_url)
                 
         if not loading:
-            output.append(model_url)
+            output.append(model_path)
 
     except Exception:
         pass
