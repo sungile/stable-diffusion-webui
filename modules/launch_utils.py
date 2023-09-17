@@ -319,6 +319,9 @@ def prepare_environment():
     if "--exit" in sys.argv:
         print("Exiting because of --exit argument")
         exit(0)
+        
+    import webui
+    webui.initialize()
 
 
 def configure_for_tests():
